@@ -1,0 +1,64 @@
+<div  class="col-md-12" ng-controller="countOfLoanAccForIneligibleReasonController">
+
+    <div class="col-sm-12 col-md-12">
+        &nbsp;
+    </div>
+
+    <div  class="col-sm-3 col-md-3">
+
+
+        <div class="col-sm-5 col-md-5" style="padding: 2px;">Start Date:</div><div class="col-sm-5 col-md-5" style="padding: 2px;"> <input size="9" id="datePicker" type="text" ng-model="startdate" placeholder='Start Date'></div>
+
+
+        <div class="col-sm-5 col-md-5" style="padding: 2px;">End Date:</div><div class="col-sm-5 col-md-5" style="padding: 2px;"> <input size="9" id="datePickerMirror" type="text" ng-model="enddate" placeholder='End Date'></div>
+        <div class="col-md-2"><i class="glyphicon glyphicon-play" ng-click="submitDate()"></i></div>
+
+
+        <div class="col-md-12" style="padding: 2px;"><input data-ng-show="showFilter" ng-model="filterText" type="text" class="form-control"
+                                                            placeholder="filter"/></div>
+
+        <div data-ng-show="showBack" class="col-md-12" style="padding: 5px;"><i class="glyphicon glyphicon-chevron-left" ng-click="back()"></i></div>
+        <div ng-show="showBank" style="color: #1102ff; font-weight: bold;">Banks</div>
+
+        <div data-ng-show="showBank" ng-repeat="column in banks | filter:filterText">
+            <span><a class="list-group-item" ng-click="submitBanks(column.name)">{{column.name}}</a></span>
+        </div>
+
+
+        <div ng-show="showBankBranches" style="color: #1102ff; font-weight: bold;"> Branches</div>
+
+        <div data-ng-show="showBankBranches" ng-repeat="column in bankBranches | filter:filterText">
+            <span><a class="list-group-item" ng-click="submitBranch(column.name,column.ifsc_code)">{{column.name}}</a> </span>
+        </div>
+
+
+
+
+    </div>
+
+    <div  class="col-sm-8 col-md-8">
+        &nbsp;
+    </div>
+
+
+    <div  class="col-sm-8 col-md-8" scroll ng-show="resultshow">
+        <div class="col-sm-7 col-md-7" align="right"><span align="center">{{headerValue}}</span></div>
+        <div class="col-sm-5 col-md-5" align="right"><span align="right"><button ng-click="chartBar()">Bar</button></span><span align="right"><button ng-click="chartLine()">Line</button></span></div>
+        <div id="container10" style="height: 350px"></div>
+        <div>
+            <table style="white-space:nowrap" class="table table-bordered" data-anchor>
+                <tr>
+                    <th class="text-right" ng-repeat="column in report.columnHeaders">{{column.columnName}}</th>
+                </tr>
+                <tr id="{{$index}}" data-ng-click="highlight($index)" ng-repeat="row in report.data track by $index">
+                    <td class="text-right" ng-repeat="col in row.row track by $index">
+
+                        <span>{{col}}</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+</div>

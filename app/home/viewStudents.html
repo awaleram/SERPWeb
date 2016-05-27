@@ -1,0 +1,10 @@
+<div class="container">
+    <h2> View Report </h2>
+
+    <br/>
+    <ul>
+        <li ng-repeat="column in report.columnHeaders | filter:name">{{column.columnName}} , {{column.columnDisplayType}}</li>
+    </ul>
+
+    <a href="#/home"> Back</a>
+</div>

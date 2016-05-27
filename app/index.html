@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head >
+  <meta charset="utf-8">
+  <title>SERP</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="css/app.css">
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="bower_components/moment/min/moment.min.js"></script>
+
+  <script src="js/app.js"></script>
+  <script src="js/corpusChange.js"></script>
+  <script src="js/loans.js"></script>
+  <script src="js/grading.js"></script>
+  <script src="js/activityLending.js"></script>
+  <script src="js/incomeGenerationLoans.js"></script>
+  <script src="js/shgEligibleForVlrController.js"></script>
+  <script src="js/eligibleShgForVLRByBankWiseController.js"></script>
+  <script src="js/eligibleLoanAccForVlrByBankWiseController.js"></script>
+  <script src="js/countOfLoanAccForIneligibleReasonController.js"></script>
+  <script src="js/eligibleLoanAccForVlrByDistMandalWiseController.js"></script>
+  <script src="js/countOfLoanAccForIneligibleReasonByDistMandleWiseController.js"></script>
+
+</head>
+<body>
+<div  class="col-md-12">
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" >
+      <tr>
+        <td height="100" align="center" valign="top" background="images/ban_bg.gif">
+            <table width="1002" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+                <td width="130" align="center" valign="middle"><img src="images/govt_logo.png" /></td>
+                <td width="742" height="100" align="center" valign="middle"><img src="images/serp_title_AP.png" width="613" height="90" /></td>
+                <td width="130" align="center" valign="middle"><img src="images/logo.png"  /></td>
+              </tr>
+            </table>
+        </td>
+      </tr>
+    </table>
+</div>
+<div  class="col-sm-2 col-md-2">
+
+    <span style="color: #1102ff; font-weight: bold;">Reports</span>
+
+
+  <div class="list-group panel">
+    <a href="#/home" class="list-group-item list-group-item-success" >DashBoard</a>
+    <a class="list-group-item list-group-item-info"><br></a>
+    <a href="#/corpusChange" class="list-group-item list-group-item-success" >Corpus Change</a>
+    <a class="list-group-item list-group-item-info"><br></a>
+
+    <a href="#/changeInGrading" class="list-group-item list-group-item-success" >Change in Grading</a>
+    <a class="list-group-item list-group-item-info"><br></a>
+    <a href="#/OverDueLoans" class="list-group-item list-group-item-success" >Count of OverDue & NPA Loans</a>
+    <a href="#/NPALoans" class="list-group-item list-group-item-success" >OverDue & NPA Loan Amount</a>
+    <a class="list-group-item list-group-item-info"><br></a>
+    <a href="#/ActivityBasedLendingCount" class="list-group-item list-group-item-success" >Count of Activity Based Lending Members</a>
+    <a href="#/ActivityBasedLendingAmount" class="list-group-item list-group-item-success" >Total Activity Based Lending Loan Amount</a>
+    <a class="list-group-item list-group-item-info"><br></a>
+    <a href="#/RatioofIGAtoConsumption" class="list-group-item list-group-item-success" >Ratio of income generating loans to consumption loans</a>
+    <a class="list-group-item list-group-item-info"><br></a>
+    <a href="#/UnutilizedCCL" class="list-group-item list-group-item-success" >% of Unutilized CCL</a>
+    <a class="list-group-item list-group-item-info"><br></a>
+    <a href="#/LoansforIncomeGenerationPurpose" class="list-group-item list-group-item-success">% of Loans for Income Generation purpose</a>
+    <a class="list-group-item list-group-item-info"><br></a>
+    <a href="#/LoanAmountIGA" class="list-group-item list-group-item-success" >Amount Borrowed for Income Generation Purpose</a>
+    <a class="list-group-item list-group-item-info"><br></a>
+    <a href="#/LoanAmountPercentageIGA" class="list-group-item list-group-item-success" >% of Amount Borrowed for Income Generation Purpose</a>
+    <a class="list-group-item list-group-item-info"><br></a>
+    <a href="#/shgEligibleForVlr" class="list-group-item list-group-item-success"> % of Eligible SGH for VLR drillable by district to Mandal to VO, etc.  </a>
+    <a class="list-group-item list-group-item-info"><br></a>
+    <a href="#/EligibleShgForVLRByBankWise" class="list-group-item list-group-item-success"> % of Eligible SHG for VLR by Bank and Branch wise </a>
+    <a class="list-group-item list-group-item-info"> <br></a>
+    <a href="#/EligibleLoanAccForVlrByBankWise" class="list-group-item list-group-item-success"> % of Eligible Loan Accounts for VLR by Bank and Branch wise </a>
+    <a class="list-group-item list-group-item-info"><br></a>
+    <a href="#/CountOfLoanAccForIneligibleReason" class="list-group-item list-group-item-success"> Count of Loan accounts against “Ineligibility Reasons” Bank and Branch wise </a>
+    <a class="list-group-item list-group-item-info"><br></a>
+    <a href="#/EligibleLoanAccForVlrByDistMandleWise" class="list-group-item list-group-item-success">% of Eligible Loan Accounts for VLR Drillable By District, Mandal to Vo, etc.</a>
+    <a class="list-group-item list-group-item-info"><br></a>
+    <a href="#/CountOfLoanAccForIneligibleReasonByDistMandleWise" class="list-group-item list-group-item-success"> Count of Loan accounts against “Ineligibility Reasons” drillable by district to Mandal to VO, etc. </a>
+
+ </div>
+
+
+</div>
+<div class="col-sm-10 col-md-10">
+
+  <ng-view></ng-view>
+</div>
+
+
+
+</body>
+</html>

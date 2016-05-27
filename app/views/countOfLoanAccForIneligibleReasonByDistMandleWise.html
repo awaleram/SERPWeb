@@ -1,0 +1,107 @@
+
+<div class="col-md-12" ng-controller="countOfLoanAccForIneligibleReasonByDistMandleWiseController">
+
+    <div class="col-sm-12 col-md-12">
+        &nbsp;
+    </div>
+
+
+    <div  class="col-sm-3 col-md-3">
+
+        <div class="col-sm-5 col-md-5" style="padding: 2px;">Start Date:</div><div class="col-sm-5 col-md-5" style="padding: 2px;"> <input size="9" id="datePicker" type="text" ng-model="startdate" placeholder='Start Date'></div>
+        <div class="col-sm-5 col-md-5" style="padding: 2px;">End Date:</div><div class="col-sm-5 col-md-5" style="padding: 2px;"> <input size="9" id="datePickerMirror" type="text" ng-model="enddate" placeholder='End Date'></div>
+        <div class="col-md-2"><i class="glyphicon glyphicon-play" ng-click="submitDate()"></i></div>
+
+
+        <div class="col-md-12" style="padding: 2px;"><input data-ng-show="showFilter" ng-model="filterText" type="text" class="form-control"
+                                                            placeholder="filter"/></div>
+
+        <div data-ng-show="showBack" class="col-md-12" style="padding: 5px;"><i class="glyphicon glyphicon-chevron-left" ng-click="back()"></i></div>
+
+        <div data-ng-show="showDistricts" style="color: #1102ff; font-weight: bold;">Districts</div>
+        <div data-ng-show="showDistricts" ng-repeat="column in districts | filter:filterText">
+            <span><a class="list-group-item" ng-click="submitDistrict(column.id, column.name)">{{column.name}}</a></span>
+        </div>
+
+
+        <div>
+            <br><br><br>
+            <div data-ng-show="showAreaClusters" style="color: #1102ff; font-weight: bold;">Area Cluster</div>
+            <div align="right" data-ng-show="showAreaClusters">
+                <span><a class="list-group-item" ng-click="submitAreaClusters(-1, districtName)">All Mandals</a></span>
+            </div>
+            <div data-ng-show="showAreaClusters" ng-repeat="column in areaClusters | filter:filterText">
+                <span><a class="list-group-item" ng-click="submitAreaClusters(column.id, column.name)">{{column.name}}</a></span>
+            </div>
+        </div>
+
+
+        <div data-ng-show="showMandals" style="color: #1102ff; font-weight: bold;">Mandals</div>
+        <div data-ng-show="showMandals" ng-repeat="column in mandals | filter:filterText">
+            <span><a class="list-group-item" ng-click="submitMandals(column.id, column.name)">{{column.name}}</a></span>
+        </div>
+
+
+        <div data-ng-show="showOptions" style="color: #1102ff; font-weight: bold;">Choose</div>
+        <div data-ng-show="showOptions">
+            <span><a class="list-group-item" ng-click="submitPanchayatOption()">Panchayat</a></span>
+        </div>
+        <div data-ng-show="showOptions">
+            <span><a class="list-group-item" ng-click="submitCommunityClusterOption()">Community Cluster</a></span>
+        </div>
+
+
+        <div data-ng-show="showPanchayat" style="color: #1102ff; font-weight: bold;">Panchayats</div>
+        <div data-ng-show="showPanchayat" ng-repeat="column in panchayats | filter:filterText">
+            <span><a class="list-group-item" ng-click="submitPanchayats(column.id, column.name)">{{column.name}}</a></span>
+        </div>
+
+        <div data-ng-show="showCommunityClusters" style="color: #1102ff; font-weight: bold;">Community Cluster</div>
+        <div data-ng-show="showCommunityClusters" ng-repeat="column in communityClusters | filter:filterText">
+            <span><a class="list-group-item" ng-click="submitCommunityClusters(column.id, column.name)">{{column.name}}</a></span>
+        </div>
+
+
+        <div>
+            <br><br><br>
+            <div data-ng-show="showVOs" style="color: #1102ff; font-weight: bold;">VOs</div>
+            <div data-ng-show="showVOs" ng-repeat="column in vos | filter:filterText">
+                <span><a class="list-group-item" ng-click="submitVOs(column.id, column.name)">{{column.name}}</a></span>
+            </div>
+        </div>
+
+        <div>
+            <div data-ng-show="showSHGs" style="color: #1102ff; font-weight: bold;">SHGs</div>
+
+            <div data-ng-show="showSHGs" ng-repeat="column in shgs | filter:filterText">
+                <a class="list-group-item" ng-click="submitSHG(column.id, column.name)">{{column.name}}</a>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <div  class="col-sm-8 col-md-8" scroll ng-show="resultshow">
+        <div class="col-sm-7 col-md-7" align="right"><span align="center">{{headerValue}}</span></div>
+        <div class="col-sm-5 col-md-5" align="right"><span align="right"><button ng-click="chartBar()">Bar</button></span><span align="right"><button ng-click="chartLine()">Line</button></span></div>
+        <div id="container1" style="height: 350px"></div>
+        <div>
+            <table style="white-space:nowrap" class="table table-bordered" data-anchor>
+                <tr>
+                    <th class="text-right" ng-repeat="column in report.columnHeaders">{{column.columnName}}</th>
+                </tr>
+                <tr id="{{$index}}" data-ng-click="highlight($index)" ng-repeat="row in report.data track by $index">
+                    <td class="text-right" ng-repeat="col in row.row track by $index">
+
+                        <span>{{col}}</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+
+</div>
