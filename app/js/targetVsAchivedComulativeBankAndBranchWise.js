@@ -8,7 +8,7 @@
     }
 
     var app= angular.module('myApp.controller');
-    app.controller('eligibleLoanAccForVlrByBankWiseController', ['Base64', '$scope', '$http', function(Base64, $scope, $http) {
+    app.controller('targetVsAchivedComulativeBankAndBranchWise', ['Base64', '$scope', '$http', function(Base64, $scope, $http) {
 
 
         $scope.banks =[];
@@ -50,7 +50,7 @@
             $http.defaults.headers.common = {"Access-Control-Request-Headers": "accept, origin, authorization"}; //you probably don't need this line.  This lets me connect to my server on a different domain
             $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode('mifos' + ':' + 'password');
 
-            $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/Eligible%20Loan%20Accounts%20for%20VLR%20in%20percentage%20terms%20Bank%20and%20Branch%20wise?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_bank_name=' + $scope.bank_name + '&R_ifsc_code=' + $scope.ifsc_code).success(function (data) {
+            $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/CumulativeVsAchievedDrawingPower%20Bank%20and%20Branch%20wise?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_bank_name=' + $scope.bank_name + '&R_ifsc_code=' + $scope.ifsc_code).success(function (data) {
                 $scope.resultshow = true;
                 $scope.report = data;
                 $scope.reportHeaders = data.columnHeaders;
@@ -71,7 +71,7 @@
                         y: parseFloat($scope.report.data[i].row[1])
                     });
                     reportDataValues2.push({
-                            y: parseFloat($scope.report.data[i].row[1])
+                            y: parseFloat($scope.report.data[i].row[2])
                         }
                     );
                 }
@@ -81,7 +81,7 @@
                         height: 300
                     },
                     title: {
-                        text: '% of Eligible Loan Accounts for VLR'
+                        text: 'Target Credit Limit Vs Achieved Credit Limit'
                     },
                     xAxis: {
                         categories: $scope.reportHeaderValues
@@ -91,11 +91,15 @@
                         enabled: false
                     },
                     series: [{
-                        name: $scope.headerValue,
+                        name: 'Target Credit Limit',
                         data: reportDataValues
-                    }]
+                    },
+                        {
+                            name: 'Achieved Credit Limit',
+                            data: reportDataValues2
+                        }]
                 };
-                options.chart.renderTo = 'container12';
+                options.chart.renderTo = 'container10';
                 options.chart.type = 'line';
                 var chart1 = new Highcharts.Chart(options);
             });

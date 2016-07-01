@@ -24,7 +24,14 @@
   <script src="js/countOfLoanAccForIneligibleReasonController.js"></script>
   <script src="js/eligibleLoanAccForVlrByDistMandalWiseController.js"></script>
   <script src="js/countOfLoanAccForIneligibleReasonByDistMandleWiseController.js"></script>
-
+  <script src="js/targetVsAchivedComulativeBankAndBranchWise.js"></script>
+  <script src="js/targetDisbursmentVsAchivedDisbursmentBankandBranchWiseController.js"></script>
+  <script src="js/percentageOfEligibleShgForCreditLimitBankAndBranchWiseController.js"></script>
+  <script src="js/percentageOfEligibleShgForAchievedDisbursmentLimitByBankAndBranchController.js"></script>
+  <script src="js/targetCreditVsAchievedCreditLimitByGeographicallyDrillableController.js"></script>
+  <script src="js/targetDisbursementVsAchievedDisbursementByGeographicalDrillableController.js"></script>
+  <script src="js/percentageOfEligibleShgForCreditLimitByGeographicalAreaController.js"></script>
+  <script src="js/percentageOfEligibleShgForAchievedDisbursementGeographicalAreaWiseController.js"></script>
 </head>
 <body>
 <div  class="col-md-12">
@@ -57,9 +64,11 @@
     <a href="#/changeInGrading" class="list-group-item list-group-item-success" >Change in Grading</a>
     <a class="list-group-item list-group-item-info"><br></a>
     <a href="#/OverDueLoans" class="list-group-item list-group-item-success" >Count of OverDue & NPA Loans</a>
+    <a class="list-group-item list-group-item-info"><br></a>
     <a href="#/NPALoans" class="list-group-item list-group-item-success" >OverDue & NPA Loan Amount</a>
     <a class="list-group-item list-group-item-info"><br></a>
     <a href="#/ActivityBasedLendingCount" class="list-group-item list-group-item-success" >Count of Activity Based Lending Members</a>
+    <a class="list-group-item list-group-item-info"><br></a>
     <a href="#/ActivityBasedLendingAmount" class="list-group-item list-group-item-success" >Total Activity Based Lending Loan Amount</a>
     <a class="list-group-item list-group-item-info"><br></a>
     <a href="#/RatioofIGAtoConsumption" class="list-group-item list-group-item-success" >Ratio of income generating loans to consumption loans</a>
@@ -83,8 +92,24 @@
     <a href="#/EligibleLoanAccForVlrByDistMandleWise" class="list-group-item list-group-item-success">% of Eligible Loan Accounts for VLR Drillable By District, Mandal to Vo, etc.</a>
     <a class="list-group-item list-group-item-info"><br></a>
     <a href="#/CountOfLoanAccForIneligibleReasonByDistMandleWise" class="list-group-item list-group-item-success"> Count of Loan accounts against “Ineligibility Reasons” drillable by district to Mandal to VO, etc. </a>
-
- </div>
+    <a class="list-group-item list-group-item-info"><br></a>
+    <a href="#/TargetVsAchievedComulativeDrawingPoweByBankandBranchWise" class="list-group-item list-group-item-success">Target Cumulative Drawing Power (Credit Limit) Vs Achieved Cumulative Drawing Power Bank and Branch Wise</a>
+    <a class="list-group-item list-group-item-info"><br></a>
+    <a href="#/TargetDisbursmentVsAchievedDisbursmentBankAndBranchWise" class="list-group-item list-group-item-success">Monthly Trends for showing Target Disbursement Amount Vs Achieved Disbursement Amount Bank and Branch Wise</a>
+    <a class="list-group-item list-group-item-info"><br></a>
+    <a href="#/PercentageOfEligibleShgForCreditLimitBankAndBranchWise" class="list-group-item list-group-item-success">Monthly trends of Achievement percentage of SHG counts w.r.t. Credit Limits</a>
+    <a class="list-group-item list-group-item-info"><br></a>
+    <a href="#/PercentageOfEligibleShgForAchievedDisbursmentLimitByBankAndBranch" class="list-group-item list-group-item-success">Monthly trends of Achievement Percentage of SHG Count W.R.T Achieved Disbursement</a>
+    <a class="list-group-item list-group-item-info"><br></a>
+    <a href="#/TargetCreditVsAchievedCreditLimitByGeographicallyDrillable" class="list-group-item list-group-item-success"> Target Cumulative Drawing Power ( Credit Limit ) Vs Achieved Cumulative Drawing Power ( Credit Limit ) {Geographically drillable}   </a>
+    <a class="list-group-item list-group-item-info"><br></a>
+    <a href="#/TargetDisbursementVsAchievedDisbursementByGeographicalDrillable" class="list-group-item list-group-item-success">Target Disbursement Amount Vs Achieved Disbursement Amount {Geographically drillable}</a>
+    <a class="list-group-item list-group-item-info"><br></a>
+    <a href="#/PercentageOfEligibleShgForCreditLimitByGeographicalArea" class="list-group-item list-group-item-success"> Monthly trends of Achievement percentage of SHG counts w.r.t. Credit Limits (Achieved Credit Limit > 0 then SHG qualifies) {Geographically drillable}   </a>
+    <a class="list-group-item list-group-item-info"><br></a>
+    <a href="#/PercentageOfEligibleShgForAchievedDisbursementGeographicalAreaWise" class="list-group-item list-group-item-success">Monthly trends of Achievement percentage of SHG counts w.r.t. Actual Disbursements (Achieved Disbursement > 0 then SHG qualifies) {Geographically drillable}  </a>
+    <a class="list-group-item list-group-item-info"><br></a>
+  </div>
 
 
 </div>

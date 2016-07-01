@@ -112,7 +112,7 @@
                             data: reportDataValues2
                         }*/]
                     };
-                    options.chart.renderTo = 'container1';
+                    options.chart.renderTo = 'container13';
                     options.chart.type = 'line';
                     var chart1 = new Highcharts.Chart(options);
 

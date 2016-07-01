@@ -24,6 +24,8 @@ angular.module('myApp.controller', [])
         $scope.shgCode = -1;
         $scope.shgName = '';
         $scope.socialCategoryCode = -1;
+        $scope.bank_name = -1;
+        $scope.ifsc_code = -1;
 
         $scope.enddate = moment().subtract(1,'months').endOf('month').format('DD-MMM-YYYY');
         $scope.startdate = moment().subtract(6,'months').startOf('month').format("DD-MMM-YYYY");
@@ -34,7 +36,8 @@ angular.module('myApp.controller', [])
             var endDate = moment($scope.enddate, "DD-MMM-YYYY").format("YYYY-MM-DD");
             $http.defaults.headers.common = {"Access-Control-Request-Headers": "accept, origin, authorization"}; //you probably don't need this line.  This lets me connect to my server on a different domain
             $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode('mifos' + ':' + 'password');
-            $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/Test%20Report?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_districts=' + $scope.districtCode + '&R_mandals=' + $scope.mandalCode + '&R_states=-1&R_vos=' + $scope.voCode + '&R_Shgs=' + $scope.shgCode + '&R_SocialCategory=' + $scope.socialCategoryCode + '&R_panchayats=' + $scope.panchayatCode + '&R_areaCluster=' + $scope.areaClusterCode + '&R_communityCluster=' + $scope.communityClusterCode).success(function (data) {
+        //    $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/Test%20Report?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_districts=' + $scope.districtCode + '&R_mandals=' + $scope.mandalCode + '&R_states=-1&R_vos=' + $scope.voCode + '&R_Shgs=' + $scope.shgCode + '&R_SocialCategory=' + $scope.socialCategoryCode + '&R_panchayats=' + $scope.panchayatCode + '&R_areaCluster=' + $scope.areaClusterCode + '&R_communityCluster=' + $scope.communityClusterCode).success(function (data) {
+              $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/Dash%20Board%20Corpus%20Change%20Report?tenantIdentifier=default').success(function (data) {
                 $scope.resultshow = true;
                 $scope.report = data;
                 $scope.reportHeaders = data.columnHeaders;
@@ -85,7 +88,7 @@ angular.module('myApp.controller', [])
             $scope.filterText = '';
             $http.defaults.headers.common = {"Access-Control-Request-Headers": "accept, origin, authorization"}; //you probably don't need this line.  This lets me connect to my server on a different domain
             $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode('mifos' + ':' + 'password');
-            $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/Change%20Grading?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_districts=' + $scope.districtCode + '&R_mandals=' + $scope.mandalCode + '&R_states=-1&R_vos=' + $scope.voCode + '&R_Shgs=' + $scope.shgCode + '&R_SocialCategory=' + $scope.socialCategoryCode + '&R_panchayats=' + $scope.panchayatCode + '&R_areaCluster=' + $scope.areaClusterCode + '&R_communityCluster=' + $scope.communityClusterCode).success(function (data) {
+            $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/Dash%20Board%20Change%20in%20Grading%20Report?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_districts=' + $scope.districtCode + '&R_mandals=' + $scope.mandalCode + '&R_states=-1&R_vos=' + $scope.voCode + '&R_Shgs=' + $scope.shgCode + '&R_SocialCategory=' + $scope.socialCategoryCode + '&R_panchayats=' + $scope.panchayatCode + '&R_areaCluster=' + $scope.areaClusterCode + '&R_communityCluster=' + $scope.communityClusterCode).success(function (data) {
                 $scope.resultshow = true;
                 $scope.report = data;
                 $scope.reportHeaders = data.columnHeaders;
@@ -206,7 +209,7 @@ angular.module('myApp.controller', [])
             $scope.filterText = '';
             $http.defaults.headers.common = {"Access-Control-Request-Headers": "accept, origin, authorization"}; //you probably don't need this line.  This lets me connect to my server on a different domain
             $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode('mifos' + ':' + 'password');
-            $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/ActivityBasedLendingAmount?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_districts=' + $scope.districtCode + '&R_mandals=' + $scope.mandalCode + '&R_states=-1&R_vos=' + $scope.voCode + '&R_Shgs=' + $scope.shgCode + '&R_SocialCategory=' + $scope.socialCategoryCode + '&R_panchayats=' + $scope.panchayatCode + '&R_areaCluster=' + $scope.areaClusterCode + '&R_communityCluster=' + $scope.communityClusterCode).success(function (data) {
+            $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/Dash%20Board%20Report%20Total%20Activity%20Based%20Lending%20Loan%20Amount?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_districts=' + $scope.districtCode + '&R_mandals=' + $scope.mandalCode + '&R_states=-1&R_vos=' + $scope.voCode + '&R_Shgs=' + $scope.shgCode + '&R_SocialCategory=' + $scope.socialCategoryCode + '&R_panchayats=' + $scope.panchayatCode + '&R_areaCluster=' + $scope.areaClusterCode + '&R_communityCluster=' + $scope.communityClusterCode).success(function (data) {
                 $scope.resultshow = true;
                 $scope.report = data;
                 $scope.reportHeaders = data.columnHeaders;
@@ -268,7 +271,7 @@ angular.module('myApp.controller', [])
             $scope.filterText = '';
             $http.defaults.headers.common = {"Access-Control-Request-Headers": "accept, origin, authorization"}; //you probably don't need this line.  This lets me connect to my server on a different domain
             $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode('mifos' + ':' + 'password');
-            $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/RatioIGAtoConsumption?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_districts=' + $scope.districtCode + '&R_mandals=' + $scope.mandalCode + '&R_states=-1&R_vos=' + $scope.voCode + '&R_Shgs=' + $scope.shgCode + '&R_SocialCategory=' + $scope.socialCategoryCode + '&R_panchayats=' + $scope.panchayatCode + '&R_areaCluster=' + $scope.areaClusterCode + '&R_communityCluster=' + $scope.communityClusterCode).success(function (data) {
+            $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/Dash%20Board%20Report%20Raio%20of%20Income%20Generating%20Loans%20to%20Consumption%20Loan?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_districts=' + $scope.districtCode + '&R_mandals=' + $scope.mandalCode + '&R_states=-1&R_vos=' + $scope.voCode + '&R_Shgs=' + $scope.shgCode + '&R_SocialCategory=' + $scope.socialCategoryCode + '&R_panchayats=' + $scope.panchayatCode + '&R_areaCluster=' + $scope.areaClusterCode + '&R_communityCluster=' + $scope.communityClusterCode).success(function (data) {
                 $scope.resultshow = true;
                 $scope.report = data;
                 $scope.reportHeaders = data.columnHeaders;
@@ -329,7 +332,7 @@ angular.module('myApp.controller', [])
             $scope.filterText = '';
             $http.defaults.headers.common = {"Access-Control-Request-Headers": "accept, origin, authorization"}; //you probably don't need this line.  This lets me connect to my server on a different domain
             $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode('mifos' + ':' + 'password');
-            $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/UnutilizedCCL?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_districts=' + $scope.districtCode + '&R_mandals=' + $scope.mandalCode + '&R_states=-1&R_vos=' + $scope.voCode + '&R_Shgs=' + $scope.shgCode + '&R_SocialCategory=' + $scope.socialCategoryCode + '&R_panchayats=' + $scope.panchayatCode + '&R_areaCluster=' + $scope.areaClusterCode + '&R_communityCluster=' + $scope.communityClusterCode).success(function (data) {
+            $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/Dash%20Board%20Report%20Percentage%20of%20Unutilized%20CCL?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_districts=' + $scope.districtCode + '&R_mandals=' + $scope.mandalCode + '&R_states=-1&R_vos=' + $scope.voCode + '&R_Shgs=' + $scope.shgCode + '&R_SocialCategory=' + $scope.socialCategoryCode + '&R_panchayats=' + $scope.panchayatCode + '&R_areaCluster=' + $scope.areaClusterCode + '&R_communityCluster=' + $scope.communityClusterCode).success(function (data) {
                 $scope.resultshow = true;
                 $scope.report = data;
                 $scope.reportHeaders = data.columnHeaders;
@@ -390,7 +393,7 @@ angular.module('myApp.controller', [])
             $scope.filterText = '';
             $http.defaults.headers.common = {"Access-Control-Request-Headers": "accept, origin, authorization"}; //you probably don't need this line.  This lets me connect to my server on a different domain
             $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode('mifos' + ':' + 'password');
-            $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/LoansForIncomeGeneration?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_districts=' + $scope.districtCode + '&R_mandals=' + $scope.mandalCode + '&R_states=-1&R_vos=' + $scope.voCode + '&R_Shgs=' + $scope.shgCode + '&R_SocialCategory=' + $scope.socialCategoryCode + '&R_panchayats=' + $scope.panchayatCode + '&R_areaCluster=' + $scope.areaClusterCode + '&R_communityCluster=' + $scope.communityClusterCode).success(function (data) {
+            $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/Dash%20Board%20Report%20Percentage%20of%20Loans%20For%20Income%20Generation%20Purpose?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_districts=' + $scope.districtCode + '&R_mandals=' + $scope.mandalCode + '&R_states=-1&R_vos=' + $scope.voCode + '&R_Shgs=' + $scope.shgCode + '&R_SocialCategory=' + $scope.socialCategoryCode + '&R_panchayats=' + $scope.panchayatCode + '&R_areaCluster=' + $scope.areaClusterCode + '&R_communityCluster=' + $scope.communityClusterCode).success(function (data) {
                 $scope.resultshow = true;
                 $scope.report = data;
                 $scope.reportHeaders = data.columnHeaders;
@@ -451,7 +454,7 @@ angular.module('myApp.controller', [])
             $scope.filterText = '';
             $http.defaults.headers.common = {"Access-Control-Request-Headers": "accept, origin, authorization"}; //you probably don't need this line.  This lets me connect to my server on a different domain
             $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode('mifos' + ':' + 'password');
-            $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/LoanAmountIGA?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_districts=' + $scope.districtCode + '&R_mandals=' + $scope.mandalCode + '&R_states=-1&R_vos=' + $scope.voCode + '&R_Shgs=' + $scope.shgCode + '&R_SocialCategory=' + $scope.socialCategoryCode + '&R_panchayats=' + $scope.panchayatCode + '&R_areaCluster=' + $scope.areaClusterCode + '&R_communityCluster=' + $scope.communityClusterCode).success(function (data) {
+            $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/Dash%20Board%20Report%20Loan%20Amount%20for%20IGA-MBK?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_districts=' + $scope.districtCode + '&R_mandals=' + $scope.mandalCode + '&R_states=-1&R_vos=' + $scope.voCode + '&R_Shgs=' + $scope.shgCode + '&R_SocialCategory=' + $scope.socialCategoryCode + '&R_panchayats=' + $scope.panchayatCode + '&R_areaCluster=' + $scope.areaClusterCode + '&R_communityCluster=' + $scope.communityClusterCode).success(function (data) {
                 $scope.resultshow = true;
                 $scope.report = data;
                 $scope.reportHeaders = data.columnHeaders;
@@ -513,7 +516,7 @@ angular.module('myApp.controller', [])
             $scope.filterText = '';
             $http.defaults.headers.common = {"Access-Control-Request-Headers": "accept, origin, authorization"}; //you probably don't need this line.  This lets me connect to my server on a different domain
             $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode('mifos' + ':' + 'password');
-            $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/LoanAmountIGAPercentage?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_districts=' + $scope.districtCode + '&R_mandals=' + $scope.mandalCode + '&R_states=-1&R_vos=' + $scope.voCode + '&R_Shgs=' + $scope.shgCode + '&R_SocialCategory=' + $scope.socialCategoryCode + '&R_panchayats=' + $scope.panchayatCode + '&R_areaCluster=' + $scope.areaClusterCode + '&R_communityCluster=' + $scope.communityClusterCode).success(function (data) {
+            $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/Dash%20Board%20Report%20Percentage%20of%20Amount%20Borrowed%20For%20Income%20Generation%20Purpose?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_districts=' + $scope.districtCode + '&R_mandals=' + $scope.mandalCode + '&R_states=-1&R_vos=' + $scope.voCode + '&R_Shgs=' + $scope.shgCode + '&R_SocialCategory=' + $scope.socialCategoryCode + '&R_panchayats=' + $scope.panchayatCode + '&R_areaCluster=' + $scope.areaClusterCode + '&R_communityCluster=' + $scope.communityClusterCode).success(function (data) {
                 $scope.resultshow = true;
                 $scope.report = data;
                 $scope.reportHeaders = data.columnHeaders;
@@ -567,7 +570,455 @@ angular.module('myApp.controller', [])
                 options.chart.type = 'line';
                 var chart1 = new Highcharts.Chart(options);
             });
+
         };
+
+
+
+        $scope.submitEligibleShgForVlrByBankandBranchWise = function (){
+
+
+            var startDate = moment($scope.startdate, "DD-MMM-YYYY").format("YYYY-MM-DD");
+            var endDate = moment($scope.enddate, "DD-MMM-YYYY").format("YYYY-MM-DD");
+            $scope.filterText = '';
+            $http.defaults.headers.common = {"Access-Control-Request-Headers": "accept, origin, authorization"}; //you probably don't need this line.  This lets me connect to my server on a different domain
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode('mifos' + ':' + 'password');
+
+            $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/Dash%20Board%20Report%20Percentage%20Of%20Eligible%20Shg%20For%20Vlr?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_bank_name=' + $scope.bank_name + '&R_ifsc_code=' + $scope.ifsc_code).success(function (data) {
+                $scope.resultshow = true;
+                $scope.report = data;
+                $scope.reportHeaders = data.columnHeaders;
+                $scope.reportHeaderValues = [];
+                var reportDataValues = [];
+                var reportDataValues2 = [];
+                for (var i = 0; i < $scope.report.data.length; i++) {
+
+                    $scope.report.data[i].row[1] = parseFloat($scope.report.data[i].row[1]).toFixed(2);
+                    //  $scope.report.data[i].row[2] = numberWithCommas($scope.report.data[i].row[2]);
+                    /*  $scope.report.data[i].row[3] = numberWithCommas($scope.report.data[i].row[3]);
+                     $scope.report.data[i].row[4] = parseFloat($scope.report.data[i].row[4]).toFixed(2);
+                     $scope.report.data[i].row[5] = parseFloat($scope.report.data[i].row[5]).toFixed(2);*/
+                    //$scope.report.data[i].row[3] = $scope.report.data[i].row[3].toFixed(2);
+
+                    $scope.reportHeaderValues.push($scope.report.data[i].row[0]);
+                    reportDataValues.push({
+                        y: parseFloat($scope.report.data[i].row[1])
+                    });
+                    reportDataValues2.push({
+                            y: parseFloat($scope.report.data[i].row[1])
+                        }
+                    );
+                }
+
+                options = {
+                    chart: {
+                        height: 300
+                    },
+                    title: {
+                        text: '% Eligible SHG for VLR'
+                    },
+                    xAxis: {
+                        categories: $scope.reportHeaderValues
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: $scope.headerValue,
+                        data: reportDataValues
+                    }]
+                };
+                options.chart.renderTo = 'container11';
+                options.chart.type = 'line';
+                var chart1 = new Highcharts.Chart(options);
+            });
+
+        };
+
+        $scope.submitEligibleLoanAccountForVLRbyBranchAndBankWise = function(){
+
+            var startDate = moment($scope.startdate, "DD-MMM-YYYY").format("YYYY-MM-DD");
+            var endDate = moment($scope.enddate, "DD-MMM-YYYY").format("YYYY-MM-DD");
+            $scope.filterText = '';
+            $http.defaults.headers.common = {"Access-Control-Request-Headers": "accept, origin, authorization"}; //you probably don't need this line.  This lets me connect to my server on a different domain
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode('mifos' + ':' + 'password');
+
+            $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/Dash%20Board%20Report%20Percentage%20Of%20Eligible%20Loan%20Account%20For%20VLR?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_bank_name=' + $scope.bank_name + '&R_ifsc_code=' + $scope.ifsc_code).success(function (data) {
+                $scope.resultshow = true;
+                $scope.report = data;
+                $scope.reportHeaders = data.columnHeaders;
+                $scope.reportHeaderValues = [];
+                var reportDataValues = [];
+                var reportDataValues2 = [];
+                for (var i = 0; i < $scope.report.data.length; i++) {
+
+                    $scope.report.data[i].row[1] = parseFloat($scope.report.data[i].row[1]).toFixed(2);
+                    //  $scope.report.data[i].row[2] = numberWithCommas($scope.report.data[i].row[2]);
+                    /*  $scope.report.data[i].row[3] = numberWithCommas($scope.report.data[i].row[3]);
+                     $scope.report.data[i].row[4] = parseFloat($scope.report.data[i].row[4]).toFixed(2);
+                     $scope.report.data[i].row[5] = parseFloat($scope.report.data[i].row[5]).toFixed(2);*/
+                    //$scope.report.data[i].row[3] = $scope.report.data[i].row[3].toFixed(2);
+
+                    $scope.reportHeaderValues.push($scope.report.data[i].row[0]);
+                    reportDataValues.push({
+                        y: parseFloat($scope.report.data[i].row[1])
+                    });
+                    reportDataValues2.push({
+                            y: parseFloat($scope.report.data[i].row[1])
+                        }
+                    );
+                }
+
+                options = {
+                    chart: {
+                        height: 300
+                    },
+                    title: {
+                        text: '% of Eligible Loan Accounts for VLR'
+                    },
+                    xAxis: {
+                        categories: $scope.reportHeaderValues
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name:'% of Eligible Loan Account for VLR',
+                        data: reportDataValues
+                    }]
+                };
+                options.chart.renderTo = 'container10';
+                options.chart.type = 'line';
+                var chart1 = new Highcharts.Chart(options);
+            });
+
+        };
+
+
+
+
+        $scope.submitCountOfLoanAccForIneligibleReasonByBankAndBranchWise = function(){
+
+            var startDate = moment($scope.startdate, "DD-MMM-YYYY").format("YYYY-MM-DD");
+            var endDate = moment($scope.enddate, "DD-MMM-YYYY").format("YYYY-MM-DD");
+            $scope.filterText = '';
+            $http.defaults.headers.common = {"Access-Control-Request-Headers": "accept, origin, authorization"}; //you probably don't need this line.  This lets me connect to my server on a different domain
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode('mifos' + ':' + 'password');
+
+            $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/Dash%20Board%20Report%20Count%20Of%20Loan%20Account%20Againts%20Ineligibility%20Reason%20Code?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_bank_name=' + $scope.bank_name + '&R_ifsc_code=' + $scope.ifsc_code).success(function (data) {
+                $scope.resultshow = true;
+                $scope.report = data;
+                $scope.reportHeaders = data.columnHeaders;
+                $scope.reportHeaderValues = [];
+                var reportDataValues = [];
+                var reportDataValues2 = [];
+                for (var i = 0; i < $scope.report.data.length; i++) {
+
+                    $scope.report.data[i].row[1] = parseFloat($scope.report.data[i].row[1]).toFixed(2);
+                    //  $scope.report.data[i].row[2] = numberWithCommas($scope.report.data[i].row[2]);
+                    /*  $scope.report.data[i].row[3] = numberWithCommas($scope.report.data[i].row[3]);
+                     $scope.report.data[i].row[4] = parseFloat($scope.report.data[i].row[4]).toFixed(2);
+                     $scope.report.data[i].row[5] = parseFloat($scope.report.data[i].row[5]).toFixed(2);*/
+                    //$scope.report.data[i].row[3] = $scope.report.data[i].row[3].toFixed(2);
+
+                    $scope.reportHeaderValues.push($scope.report.data[i].row[0]);
+                    reportDataValues.push({
+                        y: parseFloat($scope.report.data[i].row[1])
+                    });
+                    reportDataValues2.push($scope.report.data[i].row[2]);
+                }
+
+                options = {
+                    chart: {
+                        height: 300
+                    },
+                    title: {
+                        text: 'Count of Loan accounts against Ineligibility Reasons'
+                    },
+                    xAxis: {
+                        categories: $scope.reportHeaderValues
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        //   name: reportDataValues2,
+                        data: reportDataValues
+                    }]
+                };
+                options.chart.renderTo = 'container12';
+                options.chart.type = 'line';
+                var chart1 = new Highcharts.Chart(options);
+            });
+
+        };
+
+
+
+        $scope.submitTargetCreditVsAchievedCreditLimitByBankAndBranchWise = function (){
+
+            var startDate = moment($scope.startdate, "DD-MMM-YYYY").format("YYYY-MM-DD");
+            var endDate = moment($scope.enddate, "DD-MMM-YYYY").format("YYYY-MM-DD");
+            $scope.filterText = '';
+            $http.defaults.headers.common = {"Access-Control-Request-Headers": "accept, origin, authorization"}; //you probably don't need this line.  This lets me connect to my server on a different domain
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode('mifos' + ':' + 'password');
+
+            $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/Dash%20Board%20Report%20Target%20Credit%20Limit%20Vs%20Achieved%20Credit%20Limit?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_bank_name=' + $scope.bank_name + '&R_ifsc_code=' + $scope.ifsc_code).success(function (data) {
+                $scope.resultshow = true;
+                $scope.report = data;
+                $scope.reportHeaders = data.columnHeaders;
+                $scope.reportHeaderValues = [];
+                var reportDataValues = [];
+                var reportDataValues2 = [];
+                for (var i = 0; i < $scope.report.data.length; i++) {
+
+                    $scope.report.data[i].row[1] = parseFloat($scope.report.data[i].row[1]).toFixed(2);
+                    //  $scope.report.data[i].row[2] = numberWithCommas($scope.report.data[i].row[2]);
+                    /*  $scope.report.data[i].row[3] = numberWithCommas($scope.report.data[i].row[3]);
+                     $scope.report.data[i].row[4] = parseFloat($scope.report.data[i].row[4]).toFixed(2);
+                     $scope.report.data[i].row[5] = parseFloat($scope.report.data[i].row[5]).toFixed(2);*/
+                    //$scope.report.data[i].row[3] = $scope.report.data[i].row[3].toFixed(2);
+
+                    $scope.reportHeaderValues.push($scope.report.data[i].row[0]);
+                    reportDataValues.push({
+                        y: parseFloat($scope.report.data[i].row[1])
+                    });
+                    reportDataValues2.push({
+                            y: parseFloat($scope.report.data[i].row[2])
+                        }
+                    );
+                }
+
+                options = {
+                    chart: {
+                        height: 300
+                    },
+                    title: {
+                        text: 'Target Credit Limit Vs Achieved Credit Limit'
+                    },
+                    xAxis: {
+                        categories: $scope.reportHeaderValues
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Target Credit Limit',
+                        data: reportDataValues
+                    },
+                        {
+                            name: 'Achieved Credit Limit',
+                            data: reportDataValues2
+                        }]
+                };
+                options.chart.renderTo = 'container13';
+                options.chart.type = 'line';
+                var chart1 = new Highcharts.Chart(options);
+            });
+
+        };
+
+
+        $scope.submitTargetDisbursementVsAchievedDisbursementByBankAndBranchWise = function(){
+
+
+            var startDate = moment($scope.startdate, "DD-MMM-YYYY").format("YYYY-MM-DD");
+            var endDate = moment($scope.enddate, "DD-MMM-YYYY").format("YYYY-MM-DD");
+            $scope.filterText = '';
+            $http.defaults.headers.common = {"Access-Control-Request-Headers": "accept, origin, authorization"}; //you probably don't need this line.  This lets me connect to my server on a different domain
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode('mifos' + ':' + 'password');
+
+            $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/Dash%20Board%20Report%20Target%20Disbursement%20Amount%20vs%20Achieved%20Disbursement%20Amount?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_bank_name=' + $scope.bank_name + '&R_ifsc_code=' + $scope.ifsc_code).success(function (data) {
+                $scope.resultshow = true;
+                $scope.report = data;
+                $scope.reportHeaders = data.columnHeaders;
+                $scope.reportHeaderValues = [];
+                var reportDataValues = [];
+                var reportDataValues2 = [];
+                for (var i = 0; i < $scope.report.data.length; i++) {
+
+                    $scope.report.data[i].row[1] = parseFloat($scope.report.data[i].row[1]).toFixed(2);
+                    //  $scope.report.data[i].row[2] = numberWithCommas($scope.report.data[i].row[2]);
+                    /*  $scope.report.data[i].row[3] = numberWithCommas($scope.report.data[i].row[3]);
+                     $scope.report.data[i].row[4] = parseFloat($scope.report.data[i].row[4]).toFixed(2);
+                     $scope.report.data[i].row[5] = parseFloat($scope.report.data[i].row[5]).toFixed(2);*/
+                    //$scope.report.data[i].row[3] = $scope.report.data[i].row[3].toFixed(2);
+
+                    $scope.reportHeaderValues.push($scope.report.data[i].row[0]);
+                    reportDataValues.push({
+                        y: parseFloat($scope.report.data[i].row[1])
+                    });
+                    reportDataValues2.push({
+                            y: parseFloat($scope.report.data[i].row[2])
+                        }
+                    );
+                }
+
+                options = {
+                    chart: {
+                        height: 300
+                    },
+                    title: {
+                        text: 'Target Disbursement Amount Vs Achieved Disbursement Amount'
+                    },
+                    xAxis: {
+                        categories: $scope.reportHeaderValues
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Target Disbursement Amount',
+                        data: reportDataValues
+                    },
+                        {
+                            name: ' Achieved Disbursement Amount',
+                            data: reportDataValues2
+                        }]
+                };
+                options.chart.renderTo = 'container14';
+                options.chart.type = 'line';
+                var chart1 = new Highcharts.Chart(options);
+            });
+
+
+        };
+
+
+
+
+
+        $scope.submitPercentageOfEligibleShgForAchievedDisbursementByBankAndBranchWise = function (){
+
+            var startDate = moment($scope.startdate, "DD-MMM-YYYY").format("YYYY-MM-DD");
+            var endDate = moment($scope.enddate, "DD-MMM-YYYY").format("YYYY-MM-DD");
+            $scope.filterText = '';
+            $http.defaults.headers.common = {"Access-Control-Request-Headers": "accept, origin, authorization"}; //you probably don't need this line.  This lets me connect to my server on a different domain
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode('mifos' + ':' + 'password');
+
+            $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/Dash%20Board%20Report%20Percentage%20Of%20Eligible%20Shg%20For%20Achieved%20Disbursement?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_bank_name=' + $scope.bank_name + '&R_ifsc_code=' + $scope.ifsc_code).success(function (data) {
+                $scope.resultshow = true;
+                $scope.report = data;
+                $scope.reportHeaders = data.columnHeaders;
+                $scope.reportHeaderValues = [];
+                var reportDataValues = [];
+                var reportDataValues2 = [];
+                for (var i = 0; i < $scope.report.data.length; i++) {
+
+                    $scope.report.data[i].row[1] = parseFloat($scope.report.data[i].row[1]).toFixed(2);
+                    //  $scope.report.data[i].row[2] = numberWithCommas($scope.report.data[i].row[2]);
+                    /*  $scope.report.data[i].row[3] = numberWithCommas($scope.report.data[i].row[3]);
+                     $scope.report.data[i].row[4] = parseFloat($scope.report.data[i].row[4]).toFixed(2);
+                     $scope.report.data[i].row[5] = parseFloat($scope.report.data[i].row[5]).toFixed(2);*/
+                    //$scope.report.data[i].row[3] = $scope.report.data[i].row[3].toFixed(2);
+
+                    $scope.reportHeaderValues.push($scope.report.data[i].row[0]);
+                    reportDataValues.push({
+                        y: parseFloat($scope.report.data[i].row[3])
+                    });
+                    reportDataValues2.push({
+                            y: parseFloat($scope.report.data[i].row[2])
+                        }
+                    );
+                }
+
+                options = {
+                    chart: {
+                        height: 300
+                    },
+                    title: {
+                        text: '% Of Eligible SHG for Achieved Disbursement'
+                    },
+                    xAxis: {
+                        categories: $scope.reportHeaderValues
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: '% Of Eligible SHG For Achieved Disbursement',
+                        data: reportDataValues
+                    }]
+                };
+                options.chart.renderTo = 'container15';
+                options.chart.type = 'line';
+                var chart1 = new Highcharts.Chart(options);
+            });
+
+
+        };
+
+
+
+        $scope.submitPercentageOfEligibleShgForCreditLimitByBankAndBranchWise = function(){
+
+            var startDate = moment($scope.startdate, "DD-MMM-YYYY").format("YYYY-MM-DD");
+            var endDate = moment($scope.enddate, "DD-MMM-YYYY").format("YYYY-MM-DD");
+            $scope.filterText = '';
+            $http.defaults.headers.common = {"Access-Control-Request-Headers": "accept, origin, authorization"}; //you probably don't need this line.  This lets me connect to my server on a different domain
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode('mifos' + ':' + 'password');
+
+            $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/Dash%20Board%20Report%20Percent%20of%20Eligible%20Shg%20For%20Credit%20Limit?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_bank_name=' + $scope.bank_name + '&R_ifsc_code=' + $scope.ifsc_code).success(function (data) {
+                $scope.resultshow = true;
+                $scope.report = data;
+                $scope.reportHeaders = data.columnHeaders;
+                $scope.reportHeaderValues = [];
+                var reportDataValues = [];
+                var reportDataValues2 = [];
+                for (var i = 0; i < $scope.report.data.length; i++) {
+
+                    $scope.report.data[i].row[1] = parseFloat($scope.report.data[i].row[1]).toFixed(2);
+                    //  $scope.report.data[i].row[2] = numberWithCommas($scope.report.data[i].row[2]);
+                    /*  $scope.report.data[i].row[3] = numberWithCommas($scope.report.data[i].row[3]);
+                     $scope.report.data[i].row[4] = parseFloat($scope.report.data[i].row[4]).toFixed(2);
+                     $scope.report.data[i].row[5] = parseFloat($scope.report.data[i].row[5]).toFixed(2);*/
+                    //$scope.report.data[i].row[3] = $scope.report.data[i].row[3].toFixed(2);
+
+                    $scope.reportHeaderValues.push($scope.report.data[i].row[0]);
+                    reportDataValues.push({
+                        y: parseFloat($scope.report.data[i].row[3])
+                    });
+                    reportDataValues2.push({
+                            y: parseFloat($scope.report.data[i].row[2])
+                        }
+                    );
+                }
+
+                options = {
+                    chart: {
+                        height: 300
+                    },
+                    title: {
+                        text: '% Of Eligible SHG for Credit Limit'
+                    },
+                    xAxis: {
+                        categories: $scope.reportHeaderValues
+                    },
+
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: '% Of Eligible SHG For Credit Limit',
+                        data: reportDataValues
+                    }]
+                };
+                options.chart.renderTo = 'container16';
+                options.chart.type = 'line';
+                var chart1 = new Highcharts.Chart(options);
+            });
+
+        };
+
+
+
+
         $scope.submit();
         $scope.submitGrading();
         $scope.submitOverDueNpaLoanAmount();
@@ -577,6 +1028,15 @@ angular.module('myApp.controller', [])
         $scope.submitLoansForIncomeGeneration();
         $scope.submitLoanAmountIGA();
         $scope.submitLoanAmountIGAPercentage();
+        $scope.submitEligibleShgForVlrByBankandBranchWise();
+        $scope.submitEligibleLoanAccountForVLRbyBranchAndBankWise();
+        $scope.submitCountOfLoanAccForIneligibleReasonByBankAndBranchWise();
+        $scope.submitTargetCreditVsAchievedCreditLimitByBankAndBranchWise();
+        $scope.submitTargetDisbursementVsAchievedDisbursementByBankAndBranchWise();
+        $scope.submitPercentageOfEligibleShgForAchievedDisbursementByBankAndBranchWise();
+        $scope.submitPercentageOfEligibleShgForCreditLimitByBankAndBranchWise();
+
+
 }])
  // Home controller
 .controller('corpusChangeCtrl', ['Base64', '$scope', '$http', function(Base64, $scope, $http) {

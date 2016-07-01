@@ -4,7 +4,7 @@
         'use strict';
         var app= angular.module('myApp.controller');
 
-        app.controller('countOfLoanAccForIneligibleReasonByDistMandleWiseController', ['Base64', '$scope', '$http', function(Base64, $scope, $http) {
+        app.controller('percentageOfEligibleShgForAchievedDisbursementGeographicalAreaWiseController', ['Base64', '$scope', '$http', function(Base64, $scope, $http) {
 
             $scope.showFilter = false;
             $scope.resultshow = false;
@@ -62,7 +62,7 @@
                 $http.defaults.headers.common = {"Access-Control-Request-Headers": "accept, origin, authorization"}; //you probably don't need this line.  This lets me connect to my server on a different domain
                 $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode('mifos' + ':' + 'password');
 
-                $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/Count%20of%20Loan%20accounts%20against%20%E2%80%9CIneligibility%20Reasons%E2%80%9D%20drillable%20by%20district%20to%20Mandal%20to%20VO?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_districts=' + $scope.districtCode + '&R_mandals=' + $scope.mandalCode + '&R_states=-1&R_vos=' + $scope.voCode + '&R_Shgs=' + $scope.shgCode + '&R_SocialCategory=' + $scope.socialCategoryCode + '&R_panchayats=' + $scope.panchayatCode + '&R_areaCluster=' + $scope.areaClusterCode + '&R_communityCluster=' + $scope.communityClusterCode ).success(function(data){
+                $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/Percentage%20of%20Eligible%20SHG%20For%20Achieved%20Disbursement%20Geographical%20Area%20wise?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_districts=' + $scope.districtCode + '&R_mandals=' + $scope.mandalCode + '&R_states=-1&R_vos=' + $scope.voCode + '&R_Shgs=' + $scope.shgCode + '&R_SocialCategory=' + $scope.socialCategoryCode + '&R_panchayats=' + $scope.panchayatCode + '&R_areaCluster=' + $scope.areaClusterCode + '&R_communityCluster=' + $scope.communityClusterCode ).success(function(data){
 
                     $scope.resultshow = true;
                     $scope.report = data;
@@ -83,7 +83,7 @@
                         $scope.reportHeaderValues.push($scope.report.data[i].row[0]);
                         var temp = angular.copy($scope.report.data[i].row[1]);
                         reportDataValues.push({
-                            y: parseFloat($scope.report.data[i].row[1])
+                            y: parseFloat($scope.report.data[i].row[3])
                         });
                         reportDataValues2.push({
                                 y: parseFloat($scope.report.data[i].row[2])
@@ -95,7 +95,7 @@
                             height: 300
                         },
                         title: {
-                            text: 'Count of Loan accounts against Ineligibility Reasons'
+                            text: '% Of Eligible SHG for Achieved Disbursement Amount'
                         },
                         xAxis: {
                             categories: $scope.reportHeaderValues
@@ -105,9 +105,12 @@
                             enabled: false
                         },
                         series: [{
-                            name: 'Count of Loan accounts against Ineligibility Reasons',
+                            name: '% Of Eligible SHG for Achieved Disbursement Amount',
                             data: reportDataValues
-                        }]
+                        }/*,{
+                         name: 'Achieved Disbursed Amount',
+                         data: reportDataValues2
+                         }*/]
                     };
                     options.chart.renderTo = 'container1';
                     options.chart.type = 'line';

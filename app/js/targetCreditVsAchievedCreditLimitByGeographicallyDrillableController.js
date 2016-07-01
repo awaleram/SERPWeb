@@ -4,7 +4,7 @@
         'use strict';
         var app= angular.module('myApp.controller');
 
-        app.controller('countOfLoanAccForIneligibleReasonByDistMandleWiseController', ['Base64', '$scope', '$http', function(Base64, $scope, $http) {
+        app.controller('targetCreditVsAchievedCreditLimitByGeographicallyDrillableController', ['Base64', '$scope', '$http', function(Base64, $scope, $http) {
 
             $scope.showFilter = false;
             $scope.resultshow = false;
@@ -62,7 +62,7 @@
                 $http.defaults.headers.common = {"Access-Control-Request-Headers": "accept, origin, authorization"}; //you probably don't need this line.  This lets me connect to my server on a different domain
                 $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode('mifos' + ':' + 'password');
 
-                $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/Count%20of%20Loan%20accounts%20against%20%E2%80%9CIneligibility%20Reasons%E2%80%9D%20drillable%20by%20district%20to%20Mandal%20to%20VO?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_districts=' + $scope.districtCode + '&R_mandals=' + $scope.mandalCode + '&R_states=-1&R_vos=' + $scope.voCode + '&R_Shgs=' + $scope.shgCode + '&R_SocialCategory=' + $scope.socialCategoryCode + '&R_panchayats=' + $scope.panchayatCode + '&R_areaCluster=' + $scope.areaClusterCode + '&R_communityCluster=' + $scope.communityClusterCode ).success(function(data){
+                $http.get('https://localhost:8443/mifosng-provider/api/v1/runreports/Target%20Credit%20Vs%20Achieved%20Credit%20Limit%20By%20Geographical?tenantIdentifier=default&R_startDate=' + startDate + '&R_endDate=' + endDate + '&locale=en&R_districts=' + $scope.districtCode + '&R_mandals=' + $scope.mandalCode + '&R_states=-1&R_vos=' + $scope.voCode + '&R_Shgs=' + $scope.shgCode + '&R_SocialCategory=' + $scope.socialCategoryCode + '&R_panchayats=' + $scope.panchayatCode + '&R_areaCluster=' + $scope.areaClusterCode + '&R_communityCluster=' + $scope.communityClusterCode ).success(function(data){
 
                     $scope.resultshow = true;
                     $scope.report = data;
@@ -95,7 +95,7 @@
                             height: 300
                         },
                         title: {
-                            text: 'Count of Loan accounts against Ineligibility Reasons'
+                            text: 'Target Credit Limit Vs Achieved Credit Limit'
                         },
                         xAxis: {
                             categories: $scope.reportHeaderValues
@@ -105,9 +105,12 @@
                             enabled: false
                         },
                         series: [{
-                            name: 'Count of Loan accounts against Ineligibility Reasons',
+                            name: 'Target Credit Limit',
                             data: reportDataValues
-                        }]
+                        },{
+                         name: 'Achieved Credit Limit',
+                         data: reportDataValues2
+                         }]
                     };
                     options.chart.renderTo = 'container1';
                     options.chart.type = 'line';

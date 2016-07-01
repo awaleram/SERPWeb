@@ -91,6 +91,38 @@ config(['$routeProvider', function($routeProvider) {
           templateUrl : 'views/countOfLoanAccForIneligibleReasonByDistMandleWise.html',
           controller: 'countOfLoanAccForIneligibleReasonByDistMandleWiseController'
       })
+      .when('/TargetVsAchievedComulativeDrawingPoweByBankandBranchWise',{
+          templateUrl : 'views/targetVsAchievedComulativeDrawingPoweByBankandBranchWise.html',
+          controller : 'targetVsAchivedComulativeBankAndBranchWise'
+      })
+      .when('/TargetDisbursmentVsAchievedDisbursmentBankAndBranchWise',{
+          templateUrl : 'views/targetDisbursmentVsAchivedDisbursmentBankandBranchWise.html',
+          controller : 'targetDisbursmentVsAchivedDisbursmentBankandBranchWiseController'
+      })
+      .when('/PercentageOfEligibleShgForCreditLimitBankAndBranchWise',{
+          templateUrl : 'views/percentageOfEligibleShgForCreditLimitBankAndBranchWise.html',
+          controller : 'percentageOfEligibleShgForCreditLimitBankAndBranchWiseController'
+      })
+      .when('/PercentageOfEligibleShgForAchievedDisbursmentLimitByBankAndBranch',{
+          templateUrl : 'views/percentageOfEligibleShgForAchievedDisbursmentLimitByBankAndBranch.html',
+          controller : 'percentageOfEligibleShgForAchievedDisbursmentLimitByBankAndBranchController'
+      })
+      .when('/TargetCreditVsAchievedCreditLimitByGeographicallyDrillable',{
+          templateUrl : 'views/targetCreditVsAchievedCreditLimitByGeographicallyDrillable.html',
+          controller : 'targetCreditVsAchievedCreditLimitByGeographicallyDrillableController'
+      })
+      .when('/TargetDisbursementVsAchievedDisbursementByGeographicalDrillable',{
+          templateUrl : 'views/targetDisbursementVsAchievedDisbursementByGeographicalDrillable.html',
+          controller : 'targetDisbursementVsAchievedDisbursementByGeographicalDrillableController'
+      })
+      .when('/PercentageOfEligibleShgForCreditLimitByGeographicalArea',{
+          templateUrl : 'views/percentageOfEligibleShgForCreditLimitByGeographicalArea.html',
+          controller : 'percentageOfEligibleShgForCreditLimitByGeographicalAreaController'
+      })
+      .when('/PercentageOfEligibleShgForAchievedDisbursementGeographicalAreaWise',{
+          templateUrl: 'views/percentageOfEligibleShgForAchievedDisbursementGeographicalAreaWise.html',
+          controller : 'percentageOfEligibleShgForAchievedDisbursementGeographicalAreaWiseController'
+      })
       .otherwise({
         redirectTo: '/home'
       });
